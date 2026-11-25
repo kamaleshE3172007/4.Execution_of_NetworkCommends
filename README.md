@@ -11,19 +11,6 @@ and normal mode and how to configure router interface and how to save this confi
 <BR>
 flash memory or permanent memory.
 <BR>
-This commands includes# 4.Execution_of_NetworkCommands
-## AIM :Use of Network commands in Real Time environment
-## Software : Command Prompt And Network Protocol Analyzer
-## Procedure: To do this EXPERIMENT- follows these steps:
-<BR>
-In this EXPERIMENT- students have to understand basic networking commands e.g cpdump, netstat, ifconfig, nslookup ,traceroute and also Capture ping and traceroute PDUs using a network protocol analyzer 
-<BR>
-All commands related to Network configuration which includes how to switch to privilege mode
-<BR>
-and normal mode and how to configure router interface and how to save this configuration to
-<BR>
-flash memory or permanent memory.
-<BR>
 This commands includes
 <BR>
 • Configuring the Router commands
@@ -38,115 +25,75 @@ This commands includes
 <BR>
 • Other IP Commands e.g. show ip route etc.
 <BR>
+## Program
+server.py
 
+```python
+import socket
+from pythonping import ping
+
+s = socket.socket()
+s.bind(('localhost', 8000))
+s.listen(5)
+print("Server listening on port 8000...")
+
+c, addr = s.accept()
+print(f"Connection from {addr}")
+
+while True:
+    try:
+        hostname = c.recv(1024).decode('utf-8')
+        if not hostname or hostname.lower() == 'exit':
+            print("Client disconnected.")
+            break
+
+        response = ping(hostname, verbose=False, count=4)
+        c.send(str(response).encode('utf-8'))
+
+    except Exception as e:
+        c.send(f"Ping failed: {e}".encode('utf-8'))
+
+c.close()
+```
+client.py
+
+```python
+import socket
+
+s = socket.socket()
+s.connect(('localhost', 8000))
+
+while True:
+    ip = input("Enter the website you want to ping (or type 'exit' to quit): ")
+    s.send(ip.encode('utf-8'))
+
+    if ip.lower() == 'exit':
+        break
+
+    print(s.recv(4096).decode('utf-8'))
+
+s.close()
+```
 ## Output
+<img width="819" height="516" alt="image" src="https://github.com/user-attachments/assets/b961de64-c104-4e7d-920d-48a8f5a588db" />
 
-netstat:
+<img width="819" height="516" alt="image" src="https://github.com/user-attachments/assets/d7e31164-3427-4f8c-80d0-5818283370ba" />
+ 
+traceroute
+<img width="820" height="396" alt="image" src="https://github.com/user-attachments/assets/a7c327ac-bccf-48bc-869a-01db98a4a8be" />
 
-<img width="954" height="974" alt="image" src="https://github.com/user-attachments/assets/17bc4bbd-8d59-4160-af6d-74f3ad6a8b94" />
+ipconfig
+<img width="819" height="598" alt="image" src="https://github.com/user-attachments/assets/9fa61881-f992-4ec0-ade8-52453f5f7dc7" />
 
-ipconfig:
+nslookup
+<img width="816" height="816" alt="image" src="https://github.com/user-attachments/assets/14261bf6-e5ba-4f5d-9ae0-592db7adb06f" />
 
-<img width="1005" height="713" alt="image" src="https://github.com/user-attachments/assets/d1fe8435-09d0-4046-827b-96c7b63deba4" />
+netstat
+<img width="820" height="501" alt="image" src="https://github.com/user-attachments/assets/546f4a57-f764-4972-8d90-0170798c845b" />
 
-ping:
+tcpdump
+<img width="816" height="510" alt="image" src="https://github.com/user-attachments/assets/82cdb94e-a1ae-4fc8-80af-64906c2f93df" />
 
-<img width="923" height="304" alt="image" src="https://github.com/user-attachments/assets/ef5d04d7-763a-4541-83d4-665e4b4cce0f" />
-
-tracert:
-
-<img width="922" height="367" alt="image" src="https://github.com/user-attachments/assets/1735526f-e908-480b-a719-4fc1151820a5" />
-
-nslookup:
-
-<img width="765" height="1020" alt="image" src="https://github.com/user-attachments/assets/c277a224-6c1c-40e7-ab12-ddf5da7501a7" />
-
-getmac:
-
-<img width="1097" height="302" alt="image" src="https://github.com/user-attachments/assets/c8555fb1-fe06-40ac-b2b2-436265b1cea7" />
-
-hostname:
-
-<img width="684" height="180" alt="image" src="https://github.com/user-attachments/assets/fb822a8d-1ab5-4716-8318-5e2deeece4de" />
-
-nbtstat:
-
-<img width="1135" height="615" alt="image" src="https://github.com/user-attachments/assets/130d7d36-3b18-4385-b2e4-2453f0d2518e" />
-
-arp:
-
-<img width="1100" height="804" alt="image" src="https://github.com/user-attachments/assets/2b49c542-65be-4bb9-9ce6-14bccc77c8d2" />
-
-systeminfo:
-
-<img width="1164" height="964" alt="image" src="https://github.com/user-attachments/assets/37cb09ff-3657-4b4e-8581-1d9c6dc40520" />
-
-<img width="1441" height="845" alt="image" src="https://github.com/user-attachments/assets/189497e3-e24b-48d1-8a61-58a7ac84535e" />
-
-
-
-
-
-
-
-
-
-
-
-## Result
-Thus Execution of Network commands Performed 
-
-<BR>
-• Configuring the Router commands
-<BR>
-• General Commands to configure network
-<BR>
-• Privileged Mode commands of a router 
-<BR>
-• Router Processes & Statistics
-<BR>
-• IP Commands
-<BR>
-• Other IP Commands e.g. show ip route etc.
-<BR>
-
-## Output
-## trace
-<img width="1231" height="852" alt="Screenshot 2025-11-11 090109" src="https://github.com/user-attachments/assets/b259b882-978a-4e2f-91c8-4b52ba0dc743" />
-
-
-## ipconfig
-<img width="975" height="963" alt="Screenshot 2025-11-11 090124" src="https://github.com/user-attachments/assets/ce1e5f88-8e34-43d9-8d3f-80827f6c9fbe" />
-
-## ping
-<img width="899" height="301" alt="Screenshot 2025-11-11 090137" src="https://github.com/user-attachments/assets/dfb11d08-8b49-45ea-a7cc-713b1b58ec31" />
-
-## tracet
-<img width="859" height="83" alt="Screenshot 2025-11-11 090141" src="https://github.com/user-attachments/assets/46e84da9-fe8d-45d8-a3c6-f749ab11341d" />
-
-
-## nslookup
-<img width="549" height="117" alt="Screenshot 2025-11-11 090147" src="https://github.com/user-attachments/assets/1729e00a-2e32-48b1-b3ac-46d33dde461b" />
-
-
-
-## getmac
-<img width="973" height="208" alt="Screenshot 2025-11-11 090153" src="https://github.com/user-attachments/assets/57c7b040-fc86-4ea5-8e58-3576e80c792a" />
-
-
-## hostname
-<img width="487" height="65" alt="Screenshot 2025-11-11 090201" src="https://github.com/user-attachments/assets/0feb90ed-9076-4479-ac59-1cd5c36c14ca" />
-
-
-## nbtstat
-<img width="1107" height="589" alt="Screenshot 2025-11-11 090212" src="https://github.com/user-attachments/assets/cc981487-a3bc-4131-8553-6044caacfdf9" />
-
-
-## arp
-<img width="1030" height="793" alt="Screenshot 2025-11-11 090227" src="https://github.com/user-attachments/assets/7e06b421-89f8-4c77-a729-cd5109c9e468" />
-
-## systeminfo
-<img width="1173" height="1004" alt="Screenshot 2025-11-11 090239" src="https://github.com/user-attachments/assets/50e9a7c3-b530-4bdb-98e5-f04e00e726d2" />
 
 ## Result
 Thus Execution of Network commands Performed 
