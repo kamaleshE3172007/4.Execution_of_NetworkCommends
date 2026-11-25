@@ -80,18 +80,23 @@ s.close()
 <img width="819" height="516" alt="image" src="https://github.com/user-attachments/assets/d7e31164-3427-4f8c-80d0-5818283370ba" />
  
 traceroute
+
 <img width="820" height="396" alt="image" src="https://github.com/user-attachments/assets/a7c327ac-bccf-48bc-869a-01db98a4a8be" />
 
 ipconfig
+
 <img width="819" height="598" alt="image" src="https://github.com/user-attachments/assets/9fa61881-f992-4ec0-ade8-52453f5f7dc7" />
 
 nslookup
+
 <img width="816" height="816" alt="image" src="https://github.com/user-attachments/assets/14261bf6-e5ba-4f5d-9ae0-592db7adb06f" />
 
 netstat
+
 <img width="820" height="501" alt="image" src="https://github.com/user-attachments/assets/546f4a57-f764-4972-8d90-0170798c845b" />
 
 tcpdump
+
 <img width="816" height="510" alt="image" src="https://github.com/user-attachments/assets/82cdb94e-a1ae-4fc8-80af-64906c2f93df" />
 
 
